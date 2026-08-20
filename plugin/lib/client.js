@@ -53,7 +53,7 @@ window.__ModuleLoader__.load({
 			result: explainResultCodec
 		};
 
-		const CSS = '.coop-tabstrip{position:fixed;right:0;top:50%;transform:translateY(-50%);width:40px;height:128px;border:none;border-radius:12px 0 0 12px;background:rgba(80,110,220,.92);color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:-2px 2px 12px rgba(0,0,0,.18);font-size:13px;font-weight:600;letter-spacing:2px;z-index:2147483000;pointer-events:auto}.coop-tabstrip-label{line-height:1.2}.coop-tabstrip-label2{font-size:11px;opacity:.85;letter-spacing:4px;margin-left:4px}.coop-tabstrip-count{position:absolute;top:6px;right:5px;background:#e5484d;color:#fff;border-radius:9px;min-width:16px;height:16px;font-size:10px;line-height:16px;text-align:center;padding:0 4px}.coop-panel{position:fixed;top:72px;right:14px;bottom:64px;width:372px;display:flex;flex-direction:column;border-radius:14px;border:1px solid rgba(127,127,127,.28);background:rgba(250,250,252,.96);color:#222;box-shadow:0 10px 34px rgba(0,0,0,.22);font-size:13px;line-height:1.65;z-index:2147483000;pointer-events:auto;overflow:hidden}.coop-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;border-bottom:1px solid rgba(127,127,127,.2)}.coop-title{font-weight:700;font-size:14px}.coop-sub{font-size:11px;color:#888;max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.coop-iconbtn{border:none;background:transparent;cursor:pointer;font-size:14px;color:#666;padding:4px 6px;border-radius:6px}.coop-iconbtn:hover{background:rgba(127,127,127,.15)}.coop-tabs{display:flex;gap:4px;padding:8px 10px 0}.coop-tab{flex:1;border:none;background:transparent;padding:7px 0;border-radius:8px 8px 0 0;cursor:pointer;color:#666;font-size:12.5px;font-weight:600}.coop-tab-on{background:rgba(80,110,220,.12);color:#3450c8}.coop-scroll{flex:1;overflow-y:auto;padding:10px 14px 14px}.coop-sec{margin:10px 0}.coop-sec-title{font-weight:700;font-size:12px;color:#555;margin-bottom:5px}.coop-sec-body{font-size:12.5px}.coop-chips{display:flex;flex-wrap:wrap;gap:6px}.coop-chip{border:1px solid rgba(80,110,220,.4);background:rgba(80,110,220,.08);color:#3450c8;border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;max-width:100%}.coop-chip:hover{background:rgba(80,110,220,.18)}.coop-note{color:#777;font-size:12.5px;padding:14px 4px}.coop-err{color:#c0392b}.coop-err-bar{padding:6px 14px;font-size:11.5px;color:#c0392b;background:rgba(192,57,43,.08);border-top:1px solid rgba(192,57,43,.2)}.coop-foot{padding:8px 14px;font-size:11px;color:#999;border-top:1px solid rgba(127,127,127,.2);display:flex;align-items:center;gap:8px}.coop-link{border:none;background:transparent;color:#3450c8;cursor:pointer;font-size:11.5px;padding:0}.coop-detail{flex:1;overflow-y:auto;padding:10px 14px 14px}.coop-detail-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}.coop-back{cursor:pointer;color:#3450c8;font-size:12px;background:none;border:none;padding:0}.coop-badge{font-size:10.5px;color:#fff;background:#7a7a7a;border-radius:999px;padding:1px 8px}.coop-term-title{font-size:16px;font-weight:700;margin:4px 0 2px}.coop-followups{display:flex;flex-wrap:wrap;gap:6px}.coop-ask{display:flex;gap:8px;margin-top:12px}.coop-input{flex:1;border:1px solid rgba(127,127,127,.35);border-radius:8px;padding:7px 10px;font-size:12.5px;background:#fff;color:#222;min-width:0}.coop-btn{border:none;background:#3450c8;color:#fff;border-radius:8px;padding:0 14px;cursor:pointer;font-size:12.5px}.coop-btn:disabled{opacity:.5;cursor:default}.coop-act{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}.coop-act li{display:flex;align-items:center;gap:8px;font-size:12.5px}.coop-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}.coop-act-running .coop-dot{background:#3b82f6}.coop-act-done .coop-dot{background:#22a06b}.coop-act-failed .coop-dot{background:#e5484d}.coop-act-status{color:#999;font-size:11px;margin-left:auto;flex:none}.coop-pm{list-style:none;margin:0;padding:0}.coop-pm li{padding:3px 0;font-size:12.5px}.coop-pm b{color:#3450c8}.coop-warn{background:rgba(229,72,77,.08);border:1px solid rgba(229,72,77,.35);color:#c0392b;border-radius:8px;padding:8px 10px;font-size:12px;margin:8px 0;line-height:1.5}.coop-head-right{display:flex;align-items:center;gap:8px}.coop-copy{border:1px solid rgba(80,110,220,.45);background:transparent;color:#3450c8;border-radius:6px;padding:2px 8px;font-size:11px;cursor:pointer}.coop-copy:hover{background:rgba(80,110,220,.1)}.coop-copy-ok{background:rgba(34,160,107,.15);border-color:rgba(34,160,107,.5);color:#22a06b}.coop-loading{flex:1;display:flex;align-items:center;justify-content:center;color:#888;font-size:12.5px}@media (prefers-color-scheme:dark){.coop-panel{background:rgba(28,30,36,.97);color:#e6e6e6;border-color:rgba(160,160,180,.25)}.coop-sub{color:#9a9a9a}.coop-tab{color:#b0b0b0}.coop-tab-on{background:rgba(110,140,255,.16);color:#a8b8ff}.coop-sec-title{color:#b8b8c4}.coop-note{color:#9a9a9a}.coop-chip{border-color:rgba(130,155,255,.5);background:rgba(110,140,255,.12);color:#b9c6ff}.coop-input{background:#1f2128;color:#e6e6e6;border-color:rgba(160,160,180,.3)}.coop-iconbtn{color:#bbb}.coop-link{color:#a8b8ff}.coop-back{color:#a8b8ff}.coop-badge{background:#555}.coop-pm b{color:#a8b8ff}.coop-warn{background:rgba(229,72,77,.15);border-color:rgba(229,72,77,.45);color:#ff9a9a}.coop-copy{color:#b9c6ff;border-color:rgba(130,155,255,.5)}.coop-copy:hover{background:rgba(110,140,255,.12)}.coop-copy-ok{color:#7ee2b0;border-color:rgba(34,160,107,.5)}.coop-tabstrip{background:rgba(100,130,240,.95)}}';
+		const CSS = '.coop-tabstrip{position:fixed;right:0;top:50%;transform:translateY(-50%);width:40px;height:128px;border:none;border-radius:12px 0 0 12px;background:rgba(80,110,220,.92);color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:-2px 2px 12px rgba(0,0,0,.18);font-size:13px;font-weight:600;letter-spacing:2px;z-index:2147483000;pointer-events:auto}.coop-tabstrip-label{line-height:1.2}.coop-tabstrip-label2{font-size:11px;opacity:.85;letter-spacing:4px;margin-left:4px}.coop-tabstrip-count{position:absolute;top:6px;right:5px;background:#e5484d;color:#fff;border-radius:9px;min-width:16px;height:16px;font-size:10px;line-height:16px;text-align:center;padding:0 4px}.coop-panel{position:fixed;top:72px;right:14px;bottom:64px;width:372px;display:flex;flex-direction:column;border-radius:14px;border:1px solid rgba(127,127,127,.28);background:rgba(250,250,252,.96);color:#222;box-shadow:0 10px 34px rgba(0,0,0,.22);font-size:13px;line-height:1.65;z-index:2147483000;pointer-events:auto;overflow:hidden}.coop-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;border-bottom:1px solid rgba(127,127,127,.2)}.coop-title{font-weight:700;font-size:14px}.coop-sub{font-size:11px;color:#888;max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.coop-iconbtn{border:none;background:transparent;cursor:pointer;font-size:14px;color:#666;padding:4px 6px;border-radius:6px}.coop-iconbtn:hover{background:rgba(127,127,127,.15)}.coop-tabs{display:flex;gap:4px;padding:8px 10px 0}.coop-tab{flex:1;border:none;background:transparent;padding:7px 0;border-radius:8px 8px 0 0;cursor:pointer;color:#666;font-size:12.5px;font-weight:600}.coop-tab-on{background:rgba(80,110,220,.12);color:#3450c8}.coop-scroll{flex:1;overflow-y:auto;padding:10px 14px 14px}.coop-sec{margin:10px 0}.coop-sec-title{font-weight:700;font-size:12px;color:#555;margin-bottom:5px}.coop-sec-body{font-size:12.5px}.coop-chips{display:flex;flex-wrap:wrap;gap:6px}.coop-chip{border:1px solid rgba(80,110,220,.4);background:rgba(80,110,220,.08);color:#3450c8;border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;max-width:100%}.coop-chip:hover{background:rgba(80,110,220,.18)}.coop-note{color:#777;font-size:12.5px;padding:14px 4px}.coop-err{color:#c0392b}.coop-err-bar{padding:6px 14px;font-size:11.5px;color:#c0392b;background:rgba(192,57,43,.08);border-top:1px solid rgba(192,57,43,.2)}.coop-foot{padding:8px 14px;font-size:11px;color:#999;border-top:1px solid rgba(127,127,127,.2);display:flex;align-items:center;gap:8px}.coop-link{border:none;background:transparent;color:#3450c8;cursor:pointer;font-size:11.5px;padding:0}.coop-detail{flex:1;overflow-y:auto;padding:10px 14px 14px}.coop-detail-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}.coop-back{cursor:pointer;color:#3450c8;font-size:12px;background:none;border:none;padding:0}.coop-badge{font-size:10.5px;color:#fff;background:#7a7a7a;border-radius:999px;padding:1px 8px}.coop-term-title{font-size:16px;font-weight:700;margin:4px 0 2px}.coop-followups{display:flex;flex-wrap:wrap;gap:6px}.coop-ask{display:flex;gap:8px;margin-top:12px}.coop-input{flex:1;border:1px solid rgba(127,127,127,.35);border-radius:8px;padding:7px 10px;font-size:12.5px;background:#fff;color:#222;min-width:0}.coop-btn{border:none;background:#3450c8;color:#fff;border-radius:8px;padding:0 14px;cursor:pointer;font-size:12.5px}.coop-btn:disabled{opacity:.5;cursor:default}.coop-act{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}.coop-act li{display:flex;align-items:center;gap:8px;font-size:12.5px}.coop-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}.coop-act-running .coop-dot{background:#3b82f6}.coop-act-done .coop-dot{background:#22a06b}.coop-act-failed .coop-dot{background:#e5484d}.coop-act-status{color:#999;font-size:11px;margin-left:auto;flex:none}.coop-pm{list-style:none;margin:0;padding:0}.coop-pm li{padding:3px 0;font-size:12.5px}.coop-pm b{color:#3450c8}.coop-warn{background:rgba(229,72,77,.08);border:1px solid rgba(229,72,77,.35);color:#c0392b;border-radius:8px;padding:8px 10px;font-size:12px;margin:8px 0;line-height:1.5}.coop-head-right{display:flex;align-items:center;gap:8px}.coop-copy{border:1px solid rgba(80,110,220,.45);background:transparent;color:#3450c8;border-radius:6px;padding:2px 8px;font-size:11px;cursor:pointer}.coop-copy:hover{background:rgba(80,110,220,.1)}.coop-copy-ok{background:rgba(34,160,107,.15);border-color:rgba(34,160,107,.5);color:#22a06b}.coop-loading{flex:1;display:flex;align-items:center;justify-content:center;color:#888;font-size:12.5px}.coop-ring{position:fixed;background:rgba(255,200,0,.25);border:1.5px solid rgba(255,160,0,.9);border-radius:3px;pointer-events:none;z-index:2147482000;transition:opacity .3s}@media (prefers-color-scheme:dark){.coop-panel{background:rgba(28,30,36,.97);color:#e6e6e6;border-color:rgba(160,160,180,.25)}.coop-sub{color:#9a9a9a}.coop-tab{color:#b0b0b0}.coop-tab-on{background:rgba(110,140,255,.16);color:#a8b8ff}.coop-sec-title{color:#b8b8c4}.coop-note{color:#9a9a9a}.coop-chip{border-color:rgba(130,155,255,.5);background:rgba(110,140,255,.12);color:#b9c6ff}.coop-input{background:#1f2128;color:#e6e6e6;border-color:rgba(160,160,180,.3)}.coop-iconbtn{color:#bbb}.coop-link{color:#a8b8ff}.coop-back{color:#a8b8ff}.coop-badge{background:#555}.coop-pm b{color:#a8b8ff}.coop-warn{background:rgba(229,72,77,.15);border-color:rgba(229,72,77,.45);color:#ff9a9a}.coop-copy{color:#b9c6ff;border-color:rgba(130,155,255,.5)}.coop-copy:hover{background:rgba(110,140,255,.12)}.coop-copy-ok{color:#7ee2b0;border-color:rgba(34,160,107,.5)}.coop-tabstrip{background:rgba(100,130,240,.95)}}';
 
 		const TABS = [["terms", "术语雷达"], ["transparent", "过程透明"], ["coop", "协作之道"]];
 
@@ -161,6 +161,7 @@ window.__ModuleLoader__.load({
 					document.addEventListener("focusin", onFocusIn, true);
 					return function () { document.removeEventListener("focusin", onFocusIn, true); };
 				}, []);
+				react.useEffect(function () { return function () { cleanupHighlight(); }; }, []);
 
 				function openTerm(term) {
 					setBusy(true);
@@ -195,6 +196,69 @@ window.__ModuleLoader__.load({
 					}).catch(function () { /* 剪贴板不可用时静默 */ });
 				}
 
+				function escapeReg(s) {
+					return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+				}
+				function termSearchKey(term) {
+					const base = String(term || "").split("（")[0].split("(")[0].trim();
+					return base.length >= 2 ? base : String(term || "").trim();
+				}
+				let highlightCleanup = null;
+				function cleanupHighlight() { if (highlightCleanup) { highlightCleanup(); highlightCleanup = null; } }
+				function highlightTerm(term) {
+					cleanupHighlight();
+					const key = termSearchKey(term);
+					if (!key) return;
+					const re = new RegExp(/^[\x20-\x7e]+$/.test(key) ? "\\b" + escapeReg(key) + "\\b" : escapeReg(key), "i");
+					let walker = null;
+					try { walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+						acceptNode: function (node) {
+							if (node.parentElement && node.parentElement.closest && node.parentElement.closest(".coop-panel")) return NodeFilter.FILTER_REJECT;
+							return NodeFilter.FILTER_ACCEPT;
+						}
+					}); } catch (e) { return; }
+					const rings = [];
+					let count = 0;
+					let firstEl = null;
+					while (walker.nextNode() && count < 20) {
+						const node = walker.currentNode;
+						const text = node.nodeValue || "";
+						re.lastIndex = 0;
+						const m = re.exec(text);
+						if (!m) continue;
+						try {
+							const range = document.createRange();
+							range.setStart(node, m.index);
+							range.setEnd(node, m.index + m[0].length);
+							const rect = range.getBoundingClientRect();
+							if (rect && rect.width > 0 && rect.height > 0) {
+								const ring = document.createElement("div");
+								ring.className = "coop-ring";
+								ring.style.left = rect.left + "px";
+								ring.style.top = rect.top + "px";
+								ring.style.width = rect.width + "px";
+								ring.style.height = rect.height + "px";
+								document.body.appendChild(ring);
+								rings.push(ring);
+								if (!firstEl && node.parentElement) firstEl = node.parentElement;
+								count++;
+							}
+						} catch (e) { /* 跳过不可定位节点 */ }
+					}
+					if (firstEl) { try { firstEl.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) { /* 忽略 */ } }
+					if (rings.length) {
+						const dispose = function () {
+							for (const r of rings) { if (r.parentNode) r.parentNode.removeChild(r); }
+							window.removeEventListener("scroll", dispose, true);
+							window.removeEventListener("resize", dispose);
+						};
+						highlightCleanup = dispose;
+						window.addEventListener("scroll", dispose, true);
+						window.addEventListener("resize", dispose);
+						ctx.timer.timeout(dispose, 2500);
+					}
+				}
+
 				function section(title, body) {
 					return h("div", { className: "coop-sec" },
 						h("div", { className: "coop-sec-title" }, title),
@@ -211,6 +275,7 @@ window.__ModuleLoader__.load({
 						h("div", { className: "coop-detail-head" },
 							h("button", { className: "coop-back", onClick: function () { setDetail(null); } }, "← 返回"),
 							h("div", { className: "coop-head-right" },
+								h("button", { className: "coop-copy", onClick: function () { highlightTerm(d.term); } }, "定位原文"),
 								h("button", { className: "coop-copy" + (copied ? " coop-copy-ok" : ""), onClick: function () { copyDetail(d); } }, copied ? "已复制 ✓" : "复制"),
 								h("span", { className: "coop-badge" }, d.source === "model" ? "模型解读" : "内置词库"))),
 						h("div", { className: "coop-term-title" }, d.term)
