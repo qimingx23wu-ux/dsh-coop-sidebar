@@ -1,6 +1,6 @@
 // coop-sidebar host half — 人机协同侧边栏（静态部署版）
 // 提供 coopSidebar 远程服务（overview / explain），供客户端 bundle 调用。
-import { readFileSync, statSync } from 'node:fs'
+import { readFileSync, statSync, writeFileSync, renameSync, unlinkSync } from 'node:fs'
 import { createUserMessage } from '@deepseek-ai/dsh-llm'
 import { TypertRemoteService, Remote } from '@deepseek-ai/dsh-typert-protocol'
 
@@ -304,6 +304,53 @@ async function explainImpl(ctx, args) {
   }
 }
 
+// ---------- 词库管理（v0.5.0） ----------
+function str(v) { return typeof v === 'string' ? v : '' }
+
+async function glossaryListImpl(ctx, args) {
+  return { ok: true, entries: loadExtra().map(function (e) { return { term: e.term, category: e.category, aliases: e.aliases } }) }
+}
+
+async function writeGlossaryImpl(ctx, args) {
+  const op = args && args.op
+  let entries = loadExtra()
+  if (op === 'add') {
+    const entry = args && args.entry
+    if (!entry || typeof entry !== 'object') return { ok: false, error: '词条格式错误' }
+    const term = str(entry.term).trim()
+    if (!term) return { ok: false, error: '缺少术语名称（term）' }
+    const aliases = Array.isArray(entry.aliases) ? entry.aliases.filter(function (a) { return typeof a === 'string' && a.trim() }) : []
+    if (!aliases.length) return { ok: false, error: '缺少别名（aliases）' }
+    const clean = {
+      term: term,
+      aliases: aliases,
+      category: str(entry.category).trim() || '其他',
+      summary: str(entry.summary), plain: str(entry.plain), example: str(entry.example),
+      principle: str(entry.principle), boundary: str(entry.boundary),
+      followUps: Array.isArray(entry.followUps) ? entry.followUps.filter(function (f) { return typeof f === 'string' }) : []
+    }
+    if (entries.some(function (e) { return e.term === term })) return { ok: false, error: '该术语已存在' }
+    entries = entries.concat([clean])
+  } else if (op === 'delete') {
+    const term = str(args && args.term)
+    if (!term) return { ok: false, error: '缺少要删除的术语' }
+    const before = entries.length
+    entries = entries.filter(function (e) { return e.term !== term })
+    if (entries.length === before) return { ok: false, error: '未找到该自定义词条' }
+  } else {
+    return { ok: false, error: '未知操作' }
+  }
+  const tmp = new URL('./glossary-extra.json.tmp', import.meta.url)
+  try {
+    writeFileSync(tmp, JSON.stringify(entries, null, 2), 'utf8')
+    renameSync(tmp, EXTRA_PATH)
+  } catch (e) {
+    try { unlinkSync(tmp) } catch (e2) { /* 忽略清理失败 */ }
+    return { ok: false, error: '写入失败：' + String((e && e.message) || e) }
+  }
+  return { ok: true, count: entries.length }
+}
+
 // ---------- Remote 服务 ----------
 // 用伪造的装饰器上下文在纯 JS 中标记 Remote 方法（等价于 @Remote('x')）
 const REMOTE_MARKS = []
@@ -330,9 +377,17 @@ class CoopSidebarService extends TypertRemoteService {
   async explain(args) {
     return explainImpl(this.ctx, args || {})
   }
+  async writeGlossary(args) {
+    return writeGlossaryImpl(this.ctx, args || {})
+  }
+  async glossaryList(args) {
+    return glossaryListImpl(this.ctx, args || {})
+  }
 }
 markRemote('overview', CoopSidebarService.prototype.overview)
 markRemote('explain', CoopSidebarService.prototype.explain)
+markRemote('writeGlossary', CoopSidebarService.prototype.writeGlossary)
+markRemote('glossaryList', CoopSidebarService.prototype.glossaryList)
 
 function strictObjectCodec(typeSymbol, validate) {
   return {
@@ -370,6 +425,33 @@ const OVERVIEW_DESC = {
   parameters: [{ name: 'args', wire: 'args', source: 'json', codec: overviewArgsCodec }],
   result: overviewResultCodec
 }
+const writeArgsCodec = strictObjectCodec('coop-sidebar#WriteGlossaryArgs', function (value) {
+  return typeof value.op === 'string'
+})
+const writeResultCodec = strictObjectCodec('coop-sidebar#WriteGlossaryResult', function (value) {
+  return typeof value.ok === 'boolean'
+})
+const listResultCodec = strictObjectCodec('coop-sidebar#GlossaryListResult', function (value) {
+  return typeof value.ok === 'boolean'
+})
+const WRITE_DESC = {
+  id: 'coop-sidebar#coopSidebar/writeGlossary',
+  service: 'coopSidebar',
+  namespace: 'coopSidebar',
+  method: 'writeGlossary',
+  invocation: { kind: 'direct' },
+  parameters: [{ name: 'args', wire: 'args', source: 'json', codec: writeArgsCodec }],
+  result: writeResultCodec
+}
+const LIST_DESC = {
+  id: 'coop-sidebar#coopSidebar/glossaryList',
+  service: 'coopSidebar',
+  namespace: 'coopSidebar',
+  method: 'glossaryList',
+  invocation: { kind: 'direct' },
+  parameters: [],
+  result: listResultCodec
+}
 const EXPLAIN_DESC = {
   id: 'coop-sidebar#coopSidebar/explain',
   service: 'coopSidebar',
@@ -393,7 +475,7 @@ function apply(ctx) {
       face: 'host',
       schemas: [],
       model: { services: [], events: [], objects: [] },
-      invocations: [OVERVIEW_DESC, EXPLAIN_DESC]
+      invocations: [OVERVIEW_DESC, EXPLAIN_DESC, WRITE_DESC, LIST_DESC]
     })
   }
   return () => { if (dispose) void dispose() }

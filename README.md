@@ -3,7 +3,7 @@
 > 为 DeepSeek Harness 打造的**小白友好侧边栏**：自动解释专业名词、透明展示 Agent 过程、引导人机协作。
 > 让不懂编程的人也能看懂 Agent 在做什么、术语在说什么。
 
-![version](https://img.shields.io/badge/version-v0.4.0-4f7cff) ![license](https://img.shields.io/badge/license-MIT-green) ![platform](https://img.shields.io/badge/platform-DeepSeek%20Harness-8b5cf6)
+![version](https://img.shields.io/badge/version-v0.5.0-4f7cff) ![license](https://img.shields.io/badge/license-MIT-green) ![platform](https://img.shields.io/badge/platform-DeepSeek%20Harness-8b5cf6)
 
 ## ✨ 功能
 
@@ -53,7 +53,7 @@ README.md                     ← 你在这里
 - ✅ v0.2.3 追问失败显式提示原因 · 词库 68 词 · 热更新
 - ✅ v0.3.0 解释一键复制 / 导出
 - ✅ v0.4.0 术语点击高亮对话原文（定位）
-- 🔜 v0.5.0 词库用户可配置
+- ✅ v0.5.0 词库可视化配置（侧边栏内增删词条）
 - 🔜 v1.0.0 多语言 · 团队共享词库 · 使用埋点
 
 ## 🤝 贡献

@@ -53,6 +53,34 @@ window.__ModuleLoader__.load({
 			result: explainResultCodec
 		};
 
+		const writeArgsCodec = strictObjectCodec("coop-sidebar#WriteGlossaryArgs", function (value) {
+			return typeof value.op === "string";
+		});
+		const writeResultCodec = strictObjectCodec("coop-sidebar#WriteGlossaryResult", function (value) {
+			return typeof value.ok === "boolean";
+		});
+		const listResultCodec = strictObjectCodec("coop-sidebar#GlossaryListResult", function (value) {
+			return typeof value.ok === "boolean";
+		});
+		const WRITE_DESC = {
+			id: "coop-sidebar#coopSidebar/writeGlossary",
+			service: "coopSidebar",
+			namespace: "coopSidebar",
+			method: "writeGlossary",
+			invocation: { kind: "direct" },
+			parameters: [{ name: "args", wire: "args", source: "json", codec: writeArgsCodec }],
+			result: writeResultCodec
+		};
+		const LIST_DESC = {
+			id: "coop-sidebar#coopSidebar/glossaryList",
+			service: "coopSidebar",
+			namespace: "coopSidebar",
+			method: "glossaryList",
+			invocation: { kind: "direct" },
+			parameters: [],
+			result: listResultCodec
+		};
+
 		const CSS = '.coop-tabstrip{position:fixed;right:0;top:50%;transform:translateY(-50%);width:40px;height:128px;border:none;border-radius:12px 0 0 12px;background:rgba(80,110,220,.92);color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;box-shadow:-2px 2px 12px rgba(0,0,0,.18);font-size:13px;font-weight:600;letter-spacing:2px;z-index:2147483000;pointer-events:auto}.coop-tabstrip-label{line-height:1.2}.coop-tabstrip-label2{font-size:11px;opacity:.85;letter-spacing:4px;margin-left:4px}.coop-tabstrip-count{position:absolute;top:6px;right:5px;background:#e5484d;color:#fff;border-radius:9px;min-width:16px;height:16px;font-size:10px;line-height:16px;text-align:center;padding:0 4px}.coop-panel{position:fixed;top:72px;right:14px;bottom:64px;width:372px;display:flex;flex-direction:column;border-radius:14px;border:1px solid rgba(127,127,127,.28);background:rgba(250,250,252,.96);color:#222;box-shadow:0 10px 34px rgba(0,0,0,.22);font-size:13px;line-height:1.65;z-index:2147483000;pointer-events:auto;overflow:hidden}.coop-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;border-bottom:1px solid rgba(127,127,127,.2)}.coop-title{font-weight:700;font-size:14px}.coop-sub{font-size:11px;color:#888;max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.coop-iconbtn{border:none;background:transparent;cursor:pointer;font-size:14px;color:#666;padding:4px 6px;border-radius:6px}.coop-iconbtn:hover{background:rgba(127,127,127,.15)}.coop-tabs{display:flex;gap:4px;padding:8px 10px 0}.coop-tab{flex:1;border:none;background:transparent;padding:7px 0;border-radius:8px 8px 0 0;cursor:pointer;color:#666;font-size:12.5px;font-weight:600}.coop-tab-on{background:rgba(80,110,220,.12);color:#3450c8}.coop-scroll{flex:1;overflow-y:auto;padding:10px 14px 14px}.coop-sec{margin:10px 0}.coop-sec-title{font-weight:700;font-size:12px;color:#555;margin-bottom:5px}.coop-sec-body{font-size:12.5px}.coop-chips{display:flex;flex-wrap:wrap;gap:6px}.coop-chip{border:1px solid rgba(80,110,220,.4);background:rgba(80,110,220,.08);color:#3450c8;border-radius:999px;padding:3px 10px;font-size:12px;cursor:pointer;max-width:100%}.coop-chip:hover{background:rgba(80,110,220,.18)}.coop-note{color:#777;font-size:12.5px;padding:14px 4px}.coop-err{color:#c0392b}.coop-err-bar{padding:6px 14px;font-size:11.5px;color:#c0392b;background:rgba(192,57,43,.08);border-top:1px solid rgba(192,57,43,.2)}.coop-foot{padding:8px 14px;font-size:11px;color:#999;border-top:1px solid rgba(127,127,127,.2);display:flex;align-items:center;gap:8px}.coop-link{border:none;background:transparent;color:#3450c8;cursor:pointer;font-size:11.5px;padding:0}.coop-detail{flex:1;overflow-y:auto;padding:10px 14px 14px}.coop-detail-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}.coop-back{cursor:pointer;color:#3450c8;font-size:12px;background:none;border:none;padding:0}.coop-badge{font-size:10.5px;color:#fff;background:#7a7a7a;border-radius:999px;padding:1px 8px}.coop-term-title{font-size:16px;font-weight:700;margin:4px 0 2px}.coop-followups{display:flex;flex-wrap:wrap;gap:6px}.coop-ask{display:flex;gap:8px;margin-top:12px}.coop-input{flex:1;border:1px solid rgba(127,127,127,.35);border-radius:8px;padding:7px 10px;font-size:12.5px;background:#fff;color:#222;min-width:0}.coop-btn{border:none;background:#3450c8;color:#fff;border-radius:8px;padding:0 14px;cursor:pointer;font-size:12.5px}.coop-btn:disabled{opacity:.5;cursor:default}.coop-act{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}.coop-act li{display:flex;align-items:center;gap:8px;font-size:12.5px}.coop-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}.coop-act-running .coop-dot{background:#3b82f6}.coop-act-done .coop-dot{background:#22a06b}.coop-act-failed .coop-dot{background:#e5484d}.coop-act-status{color:#999;font-size:11px;margin-left:auto;flex:none}.coop-pm{list-style:none;margin:0;padding:0}.coop-pm li{padding:3px 0;font-size:12.5px}.coop-pm b{color:#3450c8}.coop-warn{background:rgba(229,72,77,.08);border:1px solid rgba(229,72,77,.35);color:#c0392b;border-radius:8px;padding:8px 10px;font-size:12px;margin:8px 0;line-height:1.5}.coop-head-right{display:flex;align-items:center;gap:8px}.coop-copy{border:1px solid rgba(80,110,220,.45);background:transparent;color:#3450c8;border-radius:6px;padding:2px 8px;font-size:11px;cursor:pointer}.coop-copy:hover{background:rgba(80,110,220,.1)}.coop-copy-ok{background:rgba(34,160,107,.15);border-color:rgba(34,160,107,.5);color:#22a06b}.coop-loading{flex:1;display:flex;align-items:center;justify-content:center;color:#888;font-size:12.5px}.coop-ring{position:fixed;background:rgba(255,200,0,.25);border:1.5px solid rgba(255,160,0,.9);border-radius:3px;pointer-events:none;z-index:2147482000;transition:opacity .3s}@media (prefers-color-scheme:dark){.coop-panel{background:rgba(28,30,36,.97);color:#e6e6e6;border-color:rgba(160,160,180,.25)}.coop-sub{color:#9a9a9a}.coop-tab{color:#b0b0b0}.coop-tab-on{background:rgba(110,140,255,.16);color:#a8b8ff}.coop-sec-title{color:#b8b8c4}.coop-note{color:#9a9a9a}.coop-chip{border-color:rgba(130,155,255,.5);background:rgba(110,140,255,.12);color:#b9c6ff}.coop-input{background:#1f2128;color:#e6e6e6;border-color:rgba(160,160,180,.3)}.coop-iconbtn{color:#bbb}.coop-link{color:#a8b8ff}.coop-back{color:#a8b8ff}.coop-badge{background:#555}.coop-pm b{color:#a8b8ff}.coop-warn{background:rgba(229,72,77,.15);border-color:rgba(229,72,77,.45);color:#ff9a9a}.coop-copy{color:#b9c6ff;border-color:rgba(130,155,255,.5)}.coop-copy:hover{background:rgba(110,140,255,.12)}.coop-copy-ok{color:#7ee2b0;border-color:rgba(34,160,107,.5)}.coop-tabstrip{background:rgba(100,130,240,.95)}}';
 
 		const TABS = [["terms", "术语雷达"], ["transparent", "过程透明"], ["coop", "协作之道"]];
@@ -76,7 +104,7 @@ window.__ModuleLoader__.load({
 			try {
 				disposers.push(await ctx.remote.$mount({
 					package: "coop-sidebar",
-					descriptors: [OVERVIEW_DESC, EXPLAIN_DESC]
+					descriptors: [OVERVIEW_DESC, EXPLAIN_DESC, WRITE_DESC, LIST_DESC]
 				}));
 			} catch (error) {
 				console.error("[coop-sidebar] remote mount failed:", error);
@@ -115,6 +143,30 @@ window.__ModuleLoader__.load({
 					}).catch(function (e) {
 						return { ok: false, error: String((e && e.message) || e) };
 					});
+				},
+				glossaryList() {
+					const service = remoteService;
+					if (!service || typeof service.glossaryList !== "function") {
+						return Promise.resolve({ ok: false, error: "侧边栏服务尚未就绪" });
+					}
+					return service.glossaryList().then(function (r) {
+						const value = r && r.ok === true && Object.prototype.hasOwnProperty.call(r, "value") ? r.value : r;
+						return value && value.ok ? value : { ok: false, error: (value && value.error) || (r && r.error && r.error.message) || "词库读取失败" };
+					}).catch(function (e) {
+						return { ok: false, error: String((e && e.message) || e) };
+					});
+				},
+				writeGlossary(payload) {
+					const service = remoteService;
+					if (!service || typeof service.writeGlossary !== "function") {
+						return Promise.resolve({ ok: false, error: "侧边栏服务尚未就绪" });
+					}
+					return service.writeGlossary(payload).then(function (r) {
+						const value = r && r.ok === true && Object.prototype.hasOwnProperty.call(r, "value") ? r.value : r;
+						return value && value.ok ? value : { ok: false, error: (value && value.error) || (r && r.error && r.error.message) || "词库写入失败" };
+					}).catch(function (e) {
+						return { ok: false, error: String((e && e.message) || e) };
+					});
 				}
 			};
 
@@ -131,6 +183,10 @@ window.__ModuleLoader__.load({
 				const [q, setQ] = react.useState("");
 				const [busy, setBusy] = react.useState(false);
 				const [copied, setCopied] = react.useState(false);
+				const [manage, setManage] = react.useState(false);
+				const [gEntries, setGEntries] = react.useState(null);
+				const [gMsg, setGMsg] = react.useState("");
+				const [form, setForm] = react.useState({ term: "", aliases: "", category: "", summary: "", plain: "", example: "", principle: "", boundary: "", followUps: "" });
 
 				react.useEffect(function () {
 					if (!current) { setOverview(null); return undefined; }
@@ -259,6 +315,66 @@ window.__ModuleLoader__.load({
 					}
 				}
 
+				function loadGlossary() {
+					rpc.glossaryList().then(function (r) { if (r.ok) setGEntries(r.entries); else setGMsg(r.error); });
+				}
+				function openManage() { setManage(true); setGMsg(""); loadGlossary(); }
+				function addEntry() {
+					const entry = {
+						term: form.term.trim(),
+						aliases: form.aliases.split(/[,，]/).map(function (x) { return x.trim(); }).filter(Boolean),
+						category: form.category.trim(),
+						summary: form.summary, plain: form.plain, example: form.example,
+						principle: form.principle, boundary: form.boundary,
+						followUps: form.followUps.split(/[,，]/).map(function (x) { return x.trim(); }).filter(Boolean)
+					};
+					if (!entry.term || !entry.aliases.length) { setGMsg("请至少填写术语名称和别名"); return; }
+					rpc.writeGlossary({ op: "add", entry: entry }).then(function (r) {
+						setGMsg(r.ok ? "✅ 已添加，5 秒内出现在术语雷达" : "❌ " + r.error);
+						if (r.ok) { setForm({ term: "", aliases: "", category: "", summary: "", plain: "", example: "", principle: "", boundary: "", followUps: "" }); loadGlossary(); }
+					});
+				}
+				function delEntry(term) {
+					rpc.writeGlossary({ op: "delete", term: term }).then(function (r) {
+						setGMsg(r.ok ? "✅ 已删除：" + term : "❌ " + r.error);
+						if (r.ok) loadGlossary();
+					});
+				}
+				function renderManage() {
+					const f = function (label, key, placeholder) {
+						return h("div", { className: "coop-sec" },
+							h("div", { className: "coop-sec-title" }, label),
+							h("input", { className: "coop-input", placeholder: placeholder || "", value: form[key], onChange: function (e) { setForm({ ...form, [key]: e.target.value }); } }));
+					};
+					const kids = [
+						h("div", { className: "coop-detail-head" },
+							h("button", { className: "coop-back", onClick: function () { setManage(false); } }, "← 返回"),
+							h("span", { className: "coop-badge" }, "词库管理")),
+						h("div", { className: "coop-term-title" }, "自定义词条（" + (gEntries ? gEntries.length : 0) + "）")
+					];
+					if (gEntries === null) kids.push(h("div", { className: "coop-note" }, "加载中…"));
+					else if (gEntries.length) kids.push(h("ul", { className: "coop-pm" }, gEntries.map(function (e, i) {
+						return h("li", { key: i },
+							h("span", null, e.term + "（" + e.category + "）"),
+							h("button", { className: "coop-link", onClick: function () { delEntry(e.term); } }, "删除"));
+					})));
+					else kids.push(h("div", { className: "coop-note" }, "暂无自定义词条。下方表单添加后 5 秒内生效。"));
+					kids.push(h("div", { className: "coop-term-title" }, "新增词条"));
+					kids.push(f("术语名称 *", "term", "如：提示词工程"));
+					kids.push(f("别名（逗号分隔）*", "aliases", "如：prompt engineering, 提示词工程"));
+					kids.push(f("分类", "category", "如：基础概念（留空默认“其他”）"));
+					kids.push(f("一句话总结", "summary"));
+					kids.push(f("大白话解释", "plain"));
+					kids.push(f("例子", "example"));
+					kids.push(f("原理", "principle"));
+					kids.push(f("边界", "boundary"));
+					kids.push(f("建议追问（逗号分隔，可选）", "followUps"));
+					kids.push(h("div", { className: "coop-ask" },
+						h("button", { className: "coop-btn", onClick: addEntry, style: { width: "100%" } }, "添加到词库")));
+					if (gMsg) kids.push(h("div", { className: "coop-note" + (gMsg.indexOf("❌") >= 0 ? " coop-err" : "") }, gMsg));
+					return h("div", { className: "coop-scroll" }, kids);
+				}
+
 				function section(title, body) {
 					return h("div", { className: "coop-sec" },
 						h("div", { className: "coop-sec-title" }, title),
@@ -365,6 +481,7 @@ window.__ModuleLoader__.load({
 				}
 
 				function renderBody() {
+					if (manage) return renderManage();
 					if (tab === "terms") return renderTerms();
 					if (tab === "transparent") return renderTransparent();
 					return renderCoop();
@@ -391,6 +508,7 @@ window.__ModuleLoader__.load({
 					error ? h("div", { className: "coop-err-bar" }, "同步失败：" + error) : null,
 					h("div", { className: "coop-foot" },
 						h("button", { className: "coop-link", onClick: function () { if (current) rpc.overview(current).then(function (r) { if (r.ok) { setOverview(r); setError(""); } else setError(r.error); }); } }, "刷新"),
+						h("button", { className: "coop-link", onClick: openManage }, "词库"),
 						h("span", null, "· 每 5 秒自动同步")));
 			}
 

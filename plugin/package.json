@@ -1,6 +1,6 @@
 {
   "name": "coop-sidebar",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "人机协同侧边栏：术语雷达 / 过程透明 / 协作之道（静态部署版）",
   "private": true,
   "type": "module",
