@@ -1,0 +1,24 @@
+{
+  "name": "coop-sidebar",
+  "version": "0.3.0",
+  "description": "人机协同侧边栏：术语雷达 / 过程透明 / 协作之道（静态部署版）",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  }
+}
